@@ -1,0 +1,71 @@
+<h2 class="content-block">Empleados</h2>
+
+<dx-data-grid class="dx-card wide-card"
+  [dataSource]="remoteDataSource"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+  [repaintChangesOnly]="true">
+
+  <dxo-selection mode="single"></dxo-selection>
+  <dxo-editing mode="popup">
+    <dxo-texts saveRow="Save" cancelRow="Cancel" editRow="Edit"></dxo-texts>
+  </dxo-editing>
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column
+    dataField="idEmpleado"
+    caption="ID Empleado"
+    [width]="100"
+    [hidingPriority]="2">
+  </dxi-column>
+  <dxi-column
+    dataField="nombreCompleto"
+    [width]="190"
+    caption="Nombre Completo"
+    [hidingPriority]="8">
+  </dxi-column>
+  <dxi-column
+    dataField="nombreDepartamento"
+    [width]="190"
+    caption="Nombre Departamento"
+    [hidingPriority]="7">
+  </dxi-column>
+  <dxi-column
+    dataField="sueldo"
+    [width]="190"
+    caption="Sueldo"
+    [hidingPriority]="8">
+  </dxi-column>
+  <dxi-column
+    dataField="fechaContrato"
+    caption="Fecha Contrato"
+    [width]="190"
+    [hidingPriority]="8">
+  </dxi-column>
+</dx-data-grid>
+
+<dx-speed-dial-action
+  icon="add"
+  label="Agregar registro"
+  [index]="1"
+  (onClick)="addRow()">
+</dx-speed-dial-action>
+<dx-speed-dial-action
+  icon="edit"
+  label="Actualizar registro"
+  [index]="2"
+  [visible]="selectedRowIndex !== -1"
+  (onClick)="editRow()">
+</dx-speed-dial-action>
+<dx-speed-dial-action
+  icon="delete"
+  label="Eliminar registro"
+  [index]="3"
+  [visible]="selectedRowIndex !== -1"
+  (onClick)="deleteRow()">
+</dx-speed-dial-action>
